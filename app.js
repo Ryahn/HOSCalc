@@ -51,7 +51,15 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', require('./routes/index'));
 
-app.use('/', express.static('public'));
+app.use('/', express.static('public', {
+    maxAge: '1d',  // Cache static files for 1 day
+    etag: true,    // Enable ETags
+    lastModified: true
+  }));
+
+  app.get('/favicon.ico', (req, res) => {
+    res.sendFile(__dirname + '/public/images/icon.ico');
+  });
 
 app.listen(config.port, () => {
   console.log(`Server is running on port ${config.port}`);

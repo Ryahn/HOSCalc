@@ -1,0 +1,86 @@
+.bg-custom-teal { background-color: #40CDD3; }
+        .text-custom-teal { color: #40CDD3; }
+        .bg-custom-orange { background-color: #FFAA7A; }
+        .text-custom-orange { color: #FFAA7A; }
+        .hover\:text-custom-teal:hover { color: #40CDD3; }
+        .hover\:text-custom-orange:hover { color: #FFAA7A; }
+        .bg-custom-gradient {
+            background: linear-gradient(135deg, #40CDD3 0%, #FFAA7A 100%);
+        }
+        
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            height: 550px;
+        }
+        
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+            height: 100%;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .carousel-button:hover {
+            background: rgba(255, 255, 255, 1);
+        }
+        
+        .carousel-button-prev {
+            left: 10px;
+        }
+        
+        .carousel-button-next {
+            right: 10px;
+        }
+        
+        .carousel-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        
+        .dot.active {
+            background: white;
+            transform: scale(1.25);
+        }
