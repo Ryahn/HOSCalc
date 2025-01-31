@@ -57,6 +57,10 @@ app.use('/', express.static('public', {
     lastModified: true
   }));
 
+  app.get('/privacy-policy', (req, res) => {
+    res.sendFile(__dirname + '/public/privacy.html');
+  });
+
   app.get('/favicon.ico', (req, res) => {
     res.sendFile(__dirname + '/public/images/icon.ico');
   });
