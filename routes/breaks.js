@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Break = require('../db/models/Break');
+const knex = Break.knex();
 
 router.post('/breaks', async (req, res) => {
     try {
@@ -34,8 +35,8 @@ router.get('/stats', async (req, res) => {
     const stats = await Break.query()
       .groupBy('type')
       .select('type')
-      .select(Break.query().raw('COUNT(*) as totalBreaks'))
-      .select(Break.query().raw('AVG(TIMESTAMPDIFF(SECOND, startTime, endTime)) as averageDuration'));
+      .select(knex.raw('COUNT(*) as totalBreaks'))
+      .select(knex.raw('AVG(TIMESTAMPDIFF(SECOND, startTime, endTime)) as averageDuration'));
 
     const last24Hours = await Break.query()
       .where('startTime', '>=', new Date(Date.now() - 24 * 60 * 60 * 1000))
