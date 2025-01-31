@@ -36,7 +36,7 @@ router.get('/stats', async (req, res) => {
       .groupBy('type')
       .select('type')
       .select(knex.raw('COUNT(*) as totalBreaks'))
-      .select(knex.raw('AVG(TIMESTAMPDIFF(SECOND, startTime, endTime)) as averageDuration'));
+      .select(knex.raw('SUM(TIMESTAMPDIFF(SECOND, startTime, endTime)) as totalDuration'));
 
     const last24Hours = await Break.query()
       .where('startTime', '>=', new Date(Date.now() - 24 * 60 * 60 * 1000))
