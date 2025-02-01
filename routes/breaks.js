@@ -51,4 +51,19 @@ router.get('/stats', async (req, res) => {
   }
 });
 
+router.delete('/breaks/:deviceId', async (req, res) => {
+  try {
+    const { deviceId } = req.params;
+
+    await Break.query()
+      .delete()
+      .where('deviceId', deviceId);
+
+    res.json({ message: 'All data deleted successfully' });
+  } catch (error) {
+    console.error('Error deleting data:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;
